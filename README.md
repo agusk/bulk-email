@@ -1,2 +1,3 @@
-bulk-email
-==========
+## bulk-email
+
+Sending bulk emails using Ruby.
