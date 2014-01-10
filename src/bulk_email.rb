@@ -60,7 +60,7 @@ MESSAGE_END
     puts('send email plaintext')
 
     message = construct_message(from,to,subject,body,false)
-    send(from,to,message)
+    smtp_send(from,to,message)
 
     puts('sent email')
   end
@@ -68,12 +68,12 @@ MESSAGE_END
     puts('send email html')
 
     message = construct_message(from,to,subject,body,true)
-    send(from,to,message)
+    smtp_send(from,to,message)
 
     puts('sent email')
 
   end
-  def send(from,to,message)
+  def smtp_send(from,to,message)
     if @usr.empty?
       smtp = Net::SMTP.new @svr, @port
       smtp.start(Socket.gethostname) do |server|
