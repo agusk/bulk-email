@@ -91,7 +91,4 @@ MESSAGE_END
 end
 
 
-#test send email
-email = BulkEmail.new('localhost',25,'','')
-email.send_email('agusk@sirsakemail.local','aku@sirsakemail.local','test email','this is email body',false)
 
