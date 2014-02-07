@@ -74,13 +74,11 @@ MESSAGE_END
 
   end
   def smtp_send(from,to,message)
-    noauth = true
-    if !@usr.nil?
-      if !@usr.empty?
-        noauth = false
-      end
-
+    noauth = false
+    if @usr.nil? || @usr.empty?
+      noauth = true
     end
+
     if noauth
       smtp = Net::SMTP.new @svr, @port
       smtp.start(Socket.gethostname) do |server|
@@ -93,6 +91,7 @@ MESSAGE_END
         server.send_message message, from, to
       end
     end
+    puts('sent email')
   end
 
 end

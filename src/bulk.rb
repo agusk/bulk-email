@@ -1,3 +1,9 @@
+###################################################
+# copyright 2014 Agus Kurniawan
+# blog: http://blog.aguskurniawan.net
+# email: agusk2007@gmail.com
+###################################################
+
 
 require './bulk_email'
 
@@ -17,28 +23,16 @@ mail_user = values[2]
 mail_password = values[3]
 
 email_content = File.read(ARGV[4])
-email = BulkEmail.new(smtp_server,port,mail_user,mail_password)
+subject = ARGV[3]
 
+email = BulkEmail.new(smtp_server,port,mail_user,mail_password)
 receivers = IO.readlines(ARGV[1])
 for receiver in receivers do
-  email.send_email(ARGV[2],receiver,ARGV[3],email_content,ARGV[5])
+
+  email.send_email(ARGV[2],receiver.strip,subject,email_content,ARGV[5])
   puts(receiver)
 end
 puts('done....')
 
 
-
-#puts(lines[0])
-#puts(values)
-#puts(values.length)
-#puts(ARGV[0])
-#puts(ARGV[1])
-#puts(ARGV[2])
-#puts(ARGV[3])
-#puts(ARGV[4])
-
-
-
-#email = BulkEmail.new('localhost',25,'','')
-#email.send_email('agusk@sirsakemail.local','aku@sirsakemail.local','test email',email_content,true)
 
